@@ -1,0 +1,29 @@
+- name: install salt-minion and python-gnupg
+  apt:
+    name: "{{ item }}"
+    state: installed
+    update_cache: yes
+  with_items:
+    - salt-minion
+    - python-gnupg
+
+# This could also be done using lineinfile, but we supply the
+# whole config in case there's other things we might want to
+# change.
+- name: fix salt minion config to point to the right saltmaster
+  template:
+    src: minion.yml.j2
+    dest: /etc/salt/minion
+
+- name: check if saltmaster entry in hosts file is already present
+  command: grep -q "{{ saltmaster.hostname }}" /etc/hosts
+  register: salt_in_hosts
+  ignore_errors: true
+    
+- name: add entry to hosts file
+  lineinfile:
+    dest: /etc/hosts
+    line: "{{ saltmaster.ip }} {{ saltmaster.hostname }}"
+  when: salt_in_hosts.rc == 1
+  notify:
+    - restart salt-minion

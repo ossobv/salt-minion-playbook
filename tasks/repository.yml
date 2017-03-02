@@ -1,0 +1,14 @@
+- name: grab salt packaging key from ubuntu keyserver
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 754A1A7AE731F165D5E6D4BD0E08A149DE57BFBE
+
+- name: add repository
+  apt_repository:
+    repo: "deb http://repo.saltstack.com/apt/{{ ansible_distribution|lower }}/{{ ansible_distribution_version }}/amd64/latest {{ ansible_distribution_release }} main"
+    filename: 'saltstack'
+    state: present
+
+- name: refresh apt
+  apt:
+    update_cache: true

@@ -1,0 +1,21 @@
+galaxy_info:
+  author: Jordi de Wal <jdwal@osso.nl>
+  description: Ansible role which installs a salt-minion from the salt repo
+  company: OSSO B.V.
+  license: GPLv3
+  min_ansible_version: 2.1
+  platforms:
+  - name: Ubuntu
+    versions:
+    - precise
+    - trusty
+    - xenial
+  - name: Debian
+    versions:
+    - etch
+    - jessie
+    - wheezy
+  galaxy_tags:
+    - salt
+    - salt-minion
+    - saltstack
