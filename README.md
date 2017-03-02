@@ -1,7 +1,7 @@
-Role Name
+salt-minion-playbook
 =========
 
-Ansible role which installs the latest version of the salt-minion and adds an entry to the `/etc/hosts` file.
+Ansible playbook which installs the latest version of the salt-minion and adds an entry to the `/etc/hosts` file.
 
 Requirements
 ------------
