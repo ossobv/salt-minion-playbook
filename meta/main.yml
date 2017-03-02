@@ -17,5 +17,8 @@ galaxy_info:
     - wheezy
   galaxy_tags:
     - salt
-    - salt-minion
+    - saltminion
     - saltstack
+    - saltagent
+    - minion
+    - agent
